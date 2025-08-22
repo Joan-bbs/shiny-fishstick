@@ -10,8 +10,18 @@
 # See /LICENSE for more information.
 #
 
-# Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+# Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.8.1）
+sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
+
+# Modify the default host name
+sed -i "s/hostname='.*'/hostname='Jan'/g" package/base-files/files/bin/config_generate
+
+# Set etc/openwrt_release
+sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
+echo "DISTRIB_SOURCECODE='Jan'" >>package/base-files/files/etc/openwrt_release
+
+# Modify the display of local time format
+sed -i 's/os.date()/os.date("%a %Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/*/index.htm
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
