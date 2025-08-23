@@ -29,6 +29,3 @@ git clone https://github.com/xiaorouji/openwrt-passwall-packages package/passwal
 # 移除 openwrt feeds 过时的luci版本
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall package/passwall-luci
-
-# lucky
-git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
